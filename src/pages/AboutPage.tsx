@@ -72,7 +72,6 @@ function PeopleSection() {
       <section className="organization-section" aria-labelledby="faculty-title">
         <div className="organization-heading">
           <h2 id="faculty-title">지도교수</h2>
-          <p>우리의 배움과 도전을 함께 이끌어 주시는 분.</p>
         </div>
         <MemberCard member={faculty} isFaculty />
       </section>
@@ -82,7 +81,6 @@ function PeopleSection() {
       >
         <div className="organization-heading">
           <h2 id="officers-title">운영진</h2>
-          <p>함께할 기회를 만들고, 동아리의 일상을 준비합니다.</p>
         </div>
         <div className="officers-grid">
           {officers.map((member) => (
@@ -93,7 +91,6 @@ function PeopleSection() {
       <section className="organization-section" aria-labelledby="members-title">
         <div className="organization-heading">
           <h2 id="members-title">구성원</h2>
-          <p>서로 다른 전공의 우리가 모여, 함께 배우고 성장합니다.</p>
         </div>
         <div className="department-panel">
           <div className="department-panel-heading">
