@@ -55,19 +55,13 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <section
-        className="home-section goals-section"
-        aria-labelledby="goals-title"
-      >
+      <section className="goals-section" aria-labelledby="goals-title">
         <div className="goal-layout">
           <div className="goal-intro">
             <span className="section-label">동아리 목표</span>
             <h2 id="goals-title">
-              선후배와 소통하고,
-              <br />
-              같이 성장할 수 있는
-              <br />
-              학술 동아리
+              <span>선후배와 소통하고,</span>{" "}
+              <span>같이 성장할 수 있는 학술 동아리</span>
             </h2>
             <p>{club.goal}</p>
           </div>
