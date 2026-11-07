@@ -5,11 +5,11 @@
   margin-bottom: 23px;
 }
 .organization-heading h2 {
-  font-size: 27px;
+  font-size: 32px;
 }
 .organization-heading p {
   margin-top: 9px;
-  font-size: 13px;
+  font-size: 15px;
 }
 .member-card {
   min-width: 0;
@@ -45,12 +45,12 @@
 }
 .member-role {
   color: var(--accent-ink);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   margin-bottom: 7px;
 }
 .member-details h3 {
-  font-size: 26px;
+  font-size: 30px;
 }
 .member-details h3 span {
   font-size: 13px;
@@ -60,7 +60,7 @@
   letter-spacing: -0.02em;
 }
 .member-description {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.9;
   margin-top: 12px;
 }
@@ -86,10 +86,10 @@
   margin-bottom: 28px;
 }
 .department-panel-heading h3 {
-  font-size: 17px;
+  font-size: 20px;
 }
 .department-panel-heading p {
-  font-size: 11px;
+  font-size: 13px;
 }
 .department-counts {
   display: grid;
@@ -109,7 +109,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
 }
 .department-item dt .icon {
@@ -160,7 +160,7 @@
 .achievement-year li {
   position: relative;
   padding-left: 19px;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.85;
 }
 .achievement-year li::before {
