@@ -7,7 +7,7 @@
   display: block;
   margin-bottom: 20px;
   color: var(--accent-ink);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
 }
 .brand {
@@ -28,8 +28,8 @@
 .landing-page .hero {
   display: flex;
   justify-content: center;
-  min-height: 490px;
-  padding: 72px 0 65px;
+  min-height: 540px;
+  padding: 80px 0 72px;
   margin-bottom: 18px;
   text-align: center;
 }
@@ -43,14 +43,14 @@
 .landing-page .hero h1 {
   max-width: 1000px;
   margin-inline: auto;
-  font-size: clamp(84px, 10.5vw, 128px);
+  font-size: clamp(96px, 11vw, 152px);
   line-height: 1.1;
   letter-spacing: -0.075em;
 }
 .landing-page .hero-description {
   max-width: 610px;
   margin: 25px auto 0;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.9;
 }
 .landing-page .hero-actions {
@@ -69,15 +69,15 @@
   text-align: center;
 }
 .goal-intro h2 {
-  font-size: 36px;
+  font-size: 44px;
   line-height: 1.45;
   letter-spacing: -0.055em;
 }
 .goal-intro > p {
-  max-width: 620px;
+  max-width: 720px;
   margin-top: 22px;
   margin-inline: auto;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.9;
 }
 .goal-list {
@@ -115,7 +115,7 @@
 }
 .member-activity-photo > img {
   width: 100%;
-  height: 410px;
+  height: 460px;
   border-radius: 16px;
   object-position: 44% 50%;
 }
@@ -123,12 +123,12 @@
   padding-top: 19px;
 }
 .member-photo-caption strong {
-  font-size: 19px;
+  font-size: 22px;
   letter-spacing: -0.035em;
 }
 .member-photo-caption p {
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .activity-options {
   display: grid;
@@ -168,18 +168,18 @@
   transform: translate(3px, -3px);
 }
 .activity-option h3 {
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 9px;
 }
 .activity-option p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.8;
-  max-width: 440px;
+  max-width: 520px;
 }
 .option-detail {
   display: inline-block;
   margin-top: 12px;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--accent-ink);
 }
 .landing-invite {
@@ -193,11 +193,11 @@
   margin-bottom: 60px;
 }
 .landing-invite h2 {
-  font-size: 23px;
+  font-size: 28px;
   margin-bottom: 9px;
 }
 .landing-invite p {
-  font-size: 12px;
+  font-size: 15px;
 }
 .form-heading {
   font-size: 23px;
@@ -413,7 +413,7 @@
 }
 @media (max-width: 360px) {
   .landing-page .hero h1 {
-    font-size: 27px;
+    font-size: clamp(56px, 17vw, 64px);
   }
   .landing-page .hero-actions {
     gap: 14px;
