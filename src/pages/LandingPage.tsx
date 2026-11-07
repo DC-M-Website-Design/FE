@@ -8,7 +8,6 @@ const memberActivities = [
     title: "함께 도전하는 공모전과 프로젝트",
     description:
       "관심 있는 분야의 공모전과 팀 프로젝트에 함께 도전합니다.",
-    detail: "공모전 · 개발 · 협업",
   },
   {
     path: "study",
@@ -16,7 +15,6 @@ const memberActivities = [
     title: "개발 역량을 함께 키우는 스터디",
     description:
       "궁금했던 기술을 함께 공부하고 경험과 노하우를 나눕니다.",
-    detail: "학습 · 실습 · 피드백",
   },
   {
     path: "events",
@@ -24,7 +22,6 @@ const memberActivities = [
     title: "선후배 간의 교류 활동",
     description:
       "수업과 진로, 대학 생활에 대한 경험과 조언을 나누며 교류합니다.",
-    detail: "정보 공유 · 조언 · 교류",
   },
 ];
 
@@ -90,10 +87,6 @@ export default function LandingPage() {
               width="650"
               height="600"
             />
-            <div className="member-photo-caption">
-              <strong>서로의 경험이, 다음 도전의 시작.</strong>
-              <p>같은 관심사를 가진 동료와 함께해요.</p>
-            </div>
           </div>
           <div className="activity-options">
             {memberActivities.map((item) => (
@@ -110,7 +103,6 @@ export default function LandingPage() {
                 </div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-                <span className="option-detail">{item.detail}</span>
               </a>
             ))}
           </div>
