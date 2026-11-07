@@ -9,8 +9,8 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: calc(50% - .5px);
-  width: 1px;
+  left: calc(50% - 1px);
+  width: 2px;
   background: var(--line);
   overflow: hidden;
   z-index: -1;
@@ -64,27 +64,39 @@
 }
 .history-card ul { padding: 0; margin: 0; list-style: none; }
 .history-card li {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8px;
   color: var(--muted);
   font-size: 14px;
   line-height: 1.8;
   overflow-wrap: anywhere;
 }
+.history-card li .icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  color: var(--accent-ink);
+  transform: translateY(2px);
+}
+.achievement-year:nth-of-type(even) .history-card li { justify-content: flex-start; }
 .history-card li + li { margin-top: 5px; }
 .history-dot {
   position: absolute;
-  left: calc(50% - 3px);
-  top: 13px;
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--line);
+  left: calc(50% - 7px);
+  top: 9px;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--line);
   border-radius: 50%;
   background: var(--bg);
-  box-shadow: 0 0 0 3px var(--bg);
+  box-shadow: 0 0 0 6px var(--bg);
   transition: background 500ms ease, border-color 500ms ease;
 }
 .achievement-year.is-visible .history-dot {
   border-color: var(--accent-ink);
-  background: var(--accent-ink);
+  background: var(--accent);
 }
 @media (prefers-reduced-motion: no-preference) {
   .is-animated .achievement-year:not(.is-visible) .history-card {
@@ -104,7 +116,8 @@
   .history-track { left: 6px; }
   .achievement-year { display: block; margin-bottom: 44px; }
   .achievement-year:nth-of-type(n) .history-card { text-align: left; }
-  .history-dot { left: -33px; top: 11px; }
+  .history-dot { left: -37px; top: 7px; }
+  .achievement-year:nth-of-type(n) .history-card li { justify-content: flex-start; }
   .history-card::before,
   .achievement-year:nth-of-type(even) .history-card::before {
     width: 20px;

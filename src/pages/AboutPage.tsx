@@ -159,7 +159,7 @@ function AchievementsSection() {
             <h2 id={`year-${year}`}>{year}</h2>
             <ul>
               {items.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}><Icon name="check" /><span>{item}</span></li>
               ))}
             </ul>
           </div>
