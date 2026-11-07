@@ -2,13 +2,19 @@ export interface MemberProfile {
   name: string;
   role: string;
   description: string;
+  affiliation?: string;
+  profileUrl?: string;
+  email?: string;
 }
 
 // Roster and counts supplied in the updated club wireframe.
 export const faculty: MemberProfile = {
   name: "김태리",
   role: "지도교수",
-  description: "동아리의 학습과 프로젝트 활동을 함께 지도합니다.",
+  affiliation: "한성대학교 컴퓨터공학부",
+  description: "추천 시스템과 그래프 기반 학습, 멀티모달 학습을 연구합니다.",
+  profileUrl: "https://taerikkk.github.io/#education",
+  email: "taerik@hansung.ac.kr",
 };
 
 export const officers: MemberProfile[] = [

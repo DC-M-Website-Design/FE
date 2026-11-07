@@ -22,8 +22,8 @@ function MemberCard({
     <article
       className={`member-card ${isFaculty ? "faculty-card" : "officer-card"}`}
     >
-      <div className="member-monogram" aria-hidden="true">
-        {member.name.slice(0, 1)}
+      <div className="member-avatar" aria-hidden="true">
+        <Icon name="user" />
       </div>
       <div className="member-details">
         <p className="member-role">{member.role}</p>
@@ -31,8 +31,32 @@ function MemberCard({
           {member.name}
           <span>{isFaculty ? "교수" : ""}</span>
         </h3>
+        {member.affiliation && (
+          <p className="member-affiliation">{member.affiliation}</p>
+        )}
         <p className="member-description">{member.description}</p>
       </div>
+      {isFaculty && (member.profileUrl || member.email) && (
+        <div className="faculty-links">
+          {member.profileUrl && (
+            <a
+              href={member.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${member.name} 교수 소개 페이지 (새 창)`}
+            >
+              <span>교수님 소개 페이지</span>
+              <Icon name="external-link" />
+            </a>
+          )}
+          {member.email && (
+            <a href={`mailto:${member.email}`}>
+              <span>{member.email}</span>
+              <Icon name="mail" />
+            </a>
+          )}
+        </div>
+      )}
     </article>
   );
 }

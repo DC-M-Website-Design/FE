@@ -19,29 +19,62 @@
   background: var(--surface);
 }
 .faculty-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 27px;
-  width: min(620px, 100%);
+  width: 100%;
   padding: 31px;
 }
-.member-monogram {
+.faculty-links {
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+  padding-left: 32px;
+  border-left: 1px solid var(--line);
+}
+.faculty-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  min-height: 36px;
+  max-width: 100%;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  transition: color 0.2s;
+}
+.faculty-links a:hover {
+  color: var(--accent-ink);
+}
+.faculty-links a span:first-child {
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+.faculty-links .icon {
+  width: 18px;
+  height: 18px;
+}
+.member-avatar {
   display: flex;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 61px;
-  height: 65px;
-  border-radius: 13px;
-  background: var(--tint);
-  color: var(--accent-ink);
-  font-size: 27px;
-  font-weight: 700;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--muted);
 }
-.faculty-card .member-monogram {
-  width: 91px;
-  height: 105px;
-  font-size: 39px;
+.member-avatar .icon {
+  width: 56%;
+  height: auto;
+  aspect-ratio: 1;
+}
+.faculty-card .member-avatar {
+  width: 96px;
+  height: 96px;
 }
 .member-role {
   color: var(--accent-ink);
@@ -59,6 +92,10 @@
   color: var(--muted);
   letter-spacing: -0.02em;
 }
+.member-affiliation {
+  margin-top: 7px;
+  font-size: 14px;
+}
 .member-description {
   font-size: 14px;
   line-height: 1.9;
@@ -69,7 +106,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 23px;
 }
-.officer-card .member-monogram {
+.officer-card .member-avatar {
   margin-bottom: 23px;
 }
 .department-panel {
@@ -215,16 +252,34 @@
     font-size: 12px;
   }
   .faculty-card {
+    grid-template-columns: auto minmax(0, 1fr);
     padding: 23px 20px;
     gap: 18px;
   }
-  .faculty-card .member-monogram {
-    width: 65px;
-    height: 85px;
-    font-size: 31px;
+  .faculty-links {
+    grid-column: 1 / -1;
+    justify-items: start;
+    padding: 16px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    gap: 6px;
+  }
+  .faculty-links a {
+    min-height: 40px;
+    font-size: 13px;
+  }
+  .faculty-links a span:first-child {
+    text-align: left;
+  }
+  .faculty-card .member-avatar {
+    width: 72px;
+    height: 72px;
   }
   .member-details h3 {
     font-size: 23px;
+  }
+  .member-affiliation {
+    font-size: 12px;
   }
   .member-description {
     font-size: 11px;
@@ -240,11 +295,10 @@
     gap: 19px;
     padding: 23px;
   }
-  .officer-card .member-monogram {
+  .officer-card .member-avatar {
     width: 56px;
-    height: 61px;
+    height: 56px;
     margin-bottom: 0;
-    font-size: 25px;
   }
   .department-panel {
     padding: 23px;
