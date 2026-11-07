@@ -20,8 +20,8 @@ function MemberCard({
     <article
       className={`member-card ${isFaculty ? "faculty-card" : "officer-card"}`}
     >
-      <div className="member-monogram" aria-hidden="true">
-        {member.name.slice(0, 1)}
+      <div className="member-avatar" aria-hidden="true">
+        <Icon name="user" />
       </div>
       <div className="member-details">
         <p className="member-role">{member.role}</p>
