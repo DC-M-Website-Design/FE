@@ -125,9 +125,7 @@ function AchievementsSection() {
       const progress = Math.max(0, Math.min(1, (trigger - rect.top) / rect.height));
       timeline.style.setProperty("--history-progress", String(progress));
       rows.forEach((row) => {
-        if (row.getBoundingClientRect().top <= trigger) {
-          row.classList.add("is-visible");
-        }
+        row.classList.toggle("is-visible", row.getBoundingClientRect().top <= trigger);
       });
       frame = 0;
     };
