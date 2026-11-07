@@ -25,16 +25,29 @@
 .hero-description {
   max-width: 390px;
 }
+.landing-intro {
+  display: grid;
+  grid-template-rows: minmax(min-content, 1fr) auto;
+  min-block-size: calc(100svh - var(--site-chrome-height));
+  gap: clamp(16px, 2.5svh, 32px);
+  padding-block: clamp(20px, 3svh, 40px);
+  margin-bottom: clamp(48px, 5vw, 80px);
+}
+.landing-intro > * {
+  min-width: 0;
+}
 .landing-page .hero {
   display: flex;
+  align-items: center;
   justify-content: center;
-  min-height: 540px;
-  padding: 80px 0 72px;
-  margin-bottom: 18px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
   text-align: center;
 }
 .landing-page .hero-copy {
   width: 100%;
+  padding: 0;
 }
 .landing-page .eyebrow {
   justify-content: center;
@@ -43,22 +56,24 @@
 .landing-page .hero h1 {
   max-width: 1000px;
   margin-inline: auto;
-  font-size: clamp(96px, 11vw, 152px);
-  line-height: 1.1;
+  font-size: clamp(72px, min(11vw, 17svh), 144px);
+  line-height: 1;
   letter-spacing: -0.075em;
 }
 .landing-page .hero-description {
   max-width: 610px;
-  margin: 25px auto 0;
-  font-size: 18px;
-  line-height: 1.9;
+  margin: clamp(12px, 2svh, 20px) auto 0;
+  font-size: clamp(14px, 1.25vw, 18px);
+  line-height: 1.75;
 }
 .landing-page .hero-actions {
   justify-content: center;
-  margin-top: 29px;
+  flex-wrap: wrap;
+  margin-top: clamp(18px, 3svh, 28px);
 }
 .goals-section {
-  padding: 44px 0 42px;
+  padding: clamp(18px, 3svh, 30px) 0;
+  margin: 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -69,16 +84,26 @@
   text-align: center;
 }
 .goal-intro h2 {
-  font-size: 44px;
-  line-height: 1.45;
+  max-width: 760px;
+  margin-inline: auto;
+  font-size: clamp(26px, min(3vw, 4.8svh), 38px);
+  line-height: 1.35;
   letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+.goal-intro h2 span {
+  display: block;
+}
+.goal-intro .section-label {
+  margin-bottom: 12px;
 }
 .goal-intro > p {
-  max-width: 720px;
-  margin-top: 22px;
+  max-width: 700px;
+  margin-top: 12px;
   margin-inline: auto;
-  font-size: 16px;
-  line-height: 1.9;
+  font-size: clamp(13px, 1.05vw, 16px);
+  line-height: 1.75;
+  text-wrap: pretty;
 }
 .goal-list {
   display: grid;
@@ -227,25 +252,16 @@
   .goal-layout {
     gap: 60px;
   }
-  .goal-intro h2 {
-    font-size: 32px;
-  }
   .join-activities-layout {
     gap: 36px;
   }
   .activity-option h3 {
     font-size: 18px;
   }
-  .landing-page .hero h1 {
-    font-size: 96px;
-  }
 }
 @media (max-width: 900px) {
   .goal-layout {
     gap: 35px;
-  }
-  .goal-intro h2 {
-    font-size: 27px;
   }
   .goal-row {
     gap: 14px;
@@ -259,9 +275,6 @@
   .goal-row .quick-icon {
     width: 38px;
     height: 38px;
-  }
-  .landing-page .hero h1 {
-    font-size: 82px;
   }
   .landing-page .hero-actions {
     gap: 16px;
@@ -286,18 +299,17 @@
   }
 }
 @media (max-width: 767px) {
-  .landing-page .hero {
-    margin-bottom: 5px;
-    min-height: 405px;
-    padding: 46px 0 42px;
+  .landing-intro {
+    gap: 16px;
+    padding-block: 20px;
   }
   .landing-page .hero h1 {
-    font-size: clamp(64px, 17vw, 96px);
+    font-size: clamp(64px, min(19vw, 15svh), 96px);
   }
   .landing-page .hero-description {
     max-width: 430px;
-    margin-top: 21px;
-    font-size: 13px;
+    margin-top: 12px;
+    font-size: 14px;
   }
   .landing-page .eyebrow {
     font-size: 10px;
@@ -305,7 +317,13 @@
     letter-spacing: 0.025em;
   }
   .landing-page .hero-actions {
-    gap: 18px;
+    gap: 12px 16px;
+    margin-top: 18px;
+  }
+  .landing-page .hero-actions .button {
+    min-height: 44px;
+    padding: 11px 14px;
+    gap: 12px;
   }
   .landing-page .hero-actions .text-link {
     font-size: 11px;
@@ -314,14 +332,17 @@
     font-size: 45px;
   }
   .goals-section {
-    padding: 31px 0 34px;
+    padding-block: 16px;
   }
   .goal-layout {
     grid-template-columns: 1fr;
     gap: 31px;
   }
   .goal-intro h2 {
-    font-size: 29px;
+    font-size: clamp(24px, 5.8vw, 30px);
+  }
+  .goal-intro .section-label {
+    margin-bottom: 10px;
   }
   .desktop-break {
     display: none;
@@ -331,9 +352,9 @@
     font-size: 11px;
   }
   .goal-intro > p {
-    font-size: 12px;
-    margin-top: 15px;
-    max-width: 100%;
+    font-size: 13px;
+    margin-top: 12px;
+    max-width: 440px;
   }
   .goal-list {
     gap: 23px;
@@ -412,9 +433,6 @@
   }
 }
 @media (max-width: 360px) {
-  .landing-page .hero h1 {
-    font-size: clamp(56px, 17vw, 64px);
-  }
   .landing-page .hero-actions {
     gap: 14px;
   }
@@ -424,7 +442,25 @@
   .brand {
     font-size: 23px;
   }
+}
+/* A short viewport has more room across than down: keep the full intro visible. */
+@media (min-width: 768px) and (max-height: 720px) {
+  .landing-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+    gap: clamp(24px, 4vw, 64px);
+    padding-block: clamp(20px, 4svh, 32px);
+  }
+  .landing-page .hero h1 {
+    font-size: clamp(72px, min(10vw, 19svh), 128px);
+  }
+  .goals-section {
+    border-block: 0;
+    border-inline-start: 1px solid var(--line);
+    padding: 16px 0 16px clamp(24px, 3vw, 48px);
+  }
   .goal-intro h2 {
-    font-size: 26px;
+    font-size: clamp(24px, 2.6vw, 34px);
   }
 }
