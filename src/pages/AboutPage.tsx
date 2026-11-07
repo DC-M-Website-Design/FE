@@ -29,8 +29,32 @@ function MemberCard({
           {member.name}
           <span>{isFaculty ? "교수" : ""}</span>
         </h3>
+        {member.affiliation && (
+          <p className="member-affiliation">{member.affiliation}</p>
+        )}
         <p className="member-description">{member.description}</p>
       </div>
+      {isFaculty && (member.profileUrl || member.email) && (
+        <div className="faculty-links">
+          {member.profileUrl && (
+            <a
+              href={member.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${member.name} 교수 소개 페이지 (새 창)`}
+            >
+              <span>교수님 소개 페이지</span>
+              <Icon name="external-link" />
+            </a>
+          )}
+          {member.email && (
+            <a href={`mailto:${member.email}`}>
+              <span>{member.email}</span>
+              <Icon name="mail" />
+            </a>
+          )}
+        </div>
+      )}
     </article>
   );
 }
