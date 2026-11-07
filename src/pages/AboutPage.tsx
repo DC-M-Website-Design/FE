@@ -117,9 +117,10 @@ function AchievementsSection() {
     const timeline = timelineRef.current;
     if (!timeline) return;
     let frame = 0;
-    const rows = timeline.querySelectorAll<HTMLElement>(".achievement-year");
+    const track = timeline.querySelector<HTMLElement>(".history-track");
+    const rows = timeline.querySelectorAll<HTMLElement>(".achievement-year, .history-origin");
     const update = () => {
-      const rect = timeline.getBoundingClientRect();
+      const rect = (track ?? timeline).getBoundingClientRect();
       const trigger = window.innerHeight * 0.78;
       const progress = Math.max(0, Math.min(1, (trigger - rect.top) / rect.height));
       timeline.style.setProperty("--history-progress", String(progress));
@@ -165,6 +166,13 @@ function AchievementsSection() {
           </div>
         </section>
       ))}
+      <section className="history-origin" aria-labelledby="history-origin-year">
+        <div className="history-origin-badge">
+          <span className="history-origin-label">SINCE</span>
+          <h2 id="history-origin-year">2001</h2>
+          <p>DC&amp;M 동아리 시작</p>
+        </div>
+      </section>
     </div>
   );
 }
