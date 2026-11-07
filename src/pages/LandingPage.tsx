@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { club } from "../data/content";
 import { Icon } from "../components/Common";
 
@@ -26,6 +27,19 @@ const memberActivities = [
 ];
 
 export default function LandingPage() {
+  const goalsRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const section = goalsRef.current;
+    if (!section || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      section.classList.toggle("is-visible", entry.isIntersecting);
+    }, { threshold: 0.15 });
+    section.classList.add("goals-animated");
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="container landing-page">
       <section className="hero" aria-labelledby="hero-title">
@@ -68,7 +82,7 @@ export default function LandingPage() {
           <figcaption>동아리 활동을 표현한 AI 생성 이미지입니다.</figcaption>
         </figure>
       </section>
-      <section className="goals-section" aria-labelledby="goals-title">
+      <section className="goals-section" aria-labelledby="goals-title" ref={goalsRef}>
         <div className="goal-layout">
           <div className="goal-intro">
             <span className="section-label">동아리 목표</span>
@@ -78,6 +92,26 @@ export default function LandingPage() {
             </h2>
             <p>{club.goal}</p>
           </div>
+          <ol className="growth-journey" aria-label="함께 성장하는 과정">
+            <li>
+              <span className="growth-icon"><Icon name="message-circle" /></span>
+              <span className="growth-step">01 / CONNECT</span>
+              <h3>소통</h3>
+              <p>먼저 걸어온 선배와, 함께할 동료.<br />대학 생활과 진로의 경험을 나눕니다.</p>
+            </li>
+            <li>
+              <span className="growth-icon"><Icon name="book-2" /></span>
+              <span className="growth-step">02 / LEARN</span>
+              <h3>배움</h3>
+              <p>혼자서는 막막했던 새로운 기술도.<br />서로 묻고 알려주며 함께 익힙니다.</p>
+            </li>
+            <li>
+              <span className="growth-icon"><Icon name="code" /></span>
+              <span className="growth-step">03 / BUILD</span>
+              <h3>도전</h3>
+              <p>작은 아이디어를 실제 결과물로.<br />함께 만들며 다음 가능성을 엽니다.</p>
+            </li>
+          </ol>
         </div>
       </section>
       <section
