@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#b9e9d5" />
+    <meta
+      name="description"
+      content="공모전과 프로젝트에 함께 도전하고, 선후배의 경험을 나누며 성장하는 동아리 DC&M을 소개합니다."
+    />
+    <title>DC&amp;M | Digital Contents and Multimedia</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/assets/pretendard-bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script>
+      try {
+        const theme = localStorage.getItem("dcnm-theme");
+        if (theme === "light" || theme === "dark")
+          document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript
+      >DC&amp;M 웹사이트를 보려면 브라우저에서 JavaScript를 켜 주세요.</noscript
+    >
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+.notice-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.contact-email {
+  color: var(--accent-ink);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  text-underline-offset: 4px;
+}
+
+.contact-email:hover {
+  text-decoration: underline;
+}
+
+.recruitment-process {
+  margin-top: 36px;
+}
+
+.recruitment-process > h3 {
+  font-size: 17px;
+}
+
+.recruitment-process .join-steps {
+  list-style: none;
+  padding: 0;
+  margin-top: 23px;
+}
+
+.recruitment-process .join-step {
+  align-items: center;
+}
+
+.recruitment-process .join-step p {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.recruitment-panel {
+  align-self: start;
+}
+
+.recruitment-panel .form-description {
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.recruitment-panel .check-label {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.recruitment-panel .field-help {
+  margin-top: 14px;
+}
+
+.recruitment-contact {
+  margin-top: 30px;
+  color: var(--accent-ink);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
+
+@media (max-width: 767px) {
+  .notice-controls .search-field {
+    width: 100%;
+  }
+
+  .notice-controls .search-field input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .recruitment-process .join-step p {
+    font-size: 13px;
+  }
+}
