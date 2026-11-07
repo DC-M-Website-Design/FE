@@ -30,8 +30,10 @@ export default function LandingPage() {
     <div className="container landing-page">
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
+          <p className="hero-kicker">LEARN. BUILD. TOGETHER.</p>
           <h1 id="hero-title">DC&amp;M</h1>
           <p className="hero-description">한성대학교 학술 정동아리</p>
+          <p className="hero-introduction">함께 배우고, 직접 만들고.<br />우리의 가능성을 넓혀가는 곳.</p>
           <div className="hero-actions">
             <a className="button mint" href="#/about">
               DC&amp;M 알아보기 <Icon name="arrow-up-right" />
@@ -51,6 +53,20 @@ export default function LandingPage() {
             </button>
           </div>
         </div>
+        <figure className="landing-collage">
+          <div className="collage-orbit" aria-hidden="true" />
+          <div className="collage-photo collage-photo-main">
+            <img src="/assets/club-project-ai.png" width="1536" height="1024" alt="대학생들이 노트북으로 함께 프로젝트를 진행하는 AI 생성 예시 이미지" fetchPriority="high" />
+            <span className="collage-photo-label"><Icon name="code" /> BUILD TOGETHER</span>
+          </div>
+          <div className="collage-photo collage-photo-detail">
+            <img src="/assets/club-study-ai.png" width="1536" height="1024" alt="노트북과 노트를 보며 공부하는 AI 생성 스터디 예시 이미지" />
+            <span className="collage-photo-label">작은 아이디어에서 시작하는 우리</span>
+          </div>
+          <span className="collage-tag collage-tag-study"><Icon name="book-2" /> STUDY</span>
+          <span className="collage-tag collage-tag-project"><Icon name="users" /> TOGETHER</span>
+          <figcaption>동아리 활동을 표현한 AI 생성 이미지입니다.</figcaption>
+        </figure>
       </section>
       <section className="goals-section" aria-labelledby="goals-title">
         <div className="goal-layout">
