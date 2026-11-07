@@ -31,44 +31,42 @@ const memberActivities = [
 export default function LandingPage() {
   return (
     <div className="container landing-page">
-      <div className="landing-intro">
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <h1 id="hero-title">DC&amp;M</h1>
-            <p className="hero-description">한성대학교 학술 정동아리</p>
-            <div className="hero-actions">
-              <a className="button mint" href="#/about">
-                DC&amp;M 알아보기 <Icon name="arrow-up-right" />
-              </a>
-              <button
-                className="text-link plain-button"
-                onClick={() =>
-                  document.getElementById("member-activities")?.scrollIntoView({
-                    behavior: matchMedia("(prefers-reduced-motion: reduce)")
-                      .matches
-                      ? "instant"
-                      : "smooth",
-                  })
-                }
-              >
-                어떤 활동을 하나요? <Icon name="arrow-right" />
-              </button>
-            </div>
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="hero-copy">
+          <h1 id="hero-title">DC&amp;M</h1>
+          <p className="hero-description">한성대학교 학술 정동아리</p>
+          <div className="hero-actions">
+            <a className="button mint" href="#/about">
+              DC&amp;M 알아보기 <Icon name="arrow-up-right" />
+            </a>
+            <button
+              className="text-link plain-button"
+              onClick={() =>
+                document.getElementById("member-activities")?.scrollIntoView({
+                  behavior: matchMedia("(prefers-reduced-motion: reduce)")
+                    .matches
+                    ? "instant"
+                    : "smooth",
+                })
+              }
+            >
+              어떤 활동을 하나요? <Icon name="arrow-right" />
+            </button>
           </div>
-        </section>
-        <section className="goals-section" aria-labelledby="goals-title">
-          <div className="goal-layout">
-            <div className="goal-intro">
-              <span className="section-label">동아리 목표</span>
-              <h2 id="goals-title">
-                <span>선후배와 소통하고,</span>{" "}
-                <span>같이 성장할 수 있는 학술 동아리</span>
-              </h2>
-              <p>{club.goal}</p>
-            </div>
+        </div>
+      </section>
+      <section className="goals-section" aria-labelledby="goals-title">
+        <div className="goal-layout">
+          <div className="goal-intro">
+            <span className="section-label">동아리 목표</span>
+            <h2 id="goals-title">
+              <span>선후배와 소통하고,</span>{" "}
+              <span>같이 성장할 수 있는 학술 동아리</span>
+            </h2>
+            <p>{club.goal}</p>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
       <section
         className="home-section landing-activities"
         id="member-activities"

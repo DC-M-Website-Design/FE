@@ -231,7 +231,7 @@ p {
   height: var(--header-height);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 32px;
 }
 .brand {
@@ -263,8 +263,9 @@ p {
 }
 .desktop-nav {
   display: flex;
+  flex-shrink: 0;
   gap: 36px;
-  margin-left: 70px;
+  margin-left: 24px;
 }
 .nav-group {
   position: relative;
@@ -310,6 +311,8 @@ p {
 }
 .header-actions {
   display: flex;
+  margin-left: auto;
+  flex-shrink: 0;
   align-items: center;
   gap: 19px;
 }

@@ -25,28 +25,18 @@
 .hero-description {
   max-width: 390px;
 }
-.landing-intro {
-  display: grid;
-  grid-template-rows: minmax(min-content, 1fr) auto;
-  min-block-size: calc(100svh - var(--site-chrome-height));
-  gap: clamp(16px, 2.5svh, 32px);
-  padding-block: clamp(20px, 3svh, 40px);
-  margin-bottom: clamp(48px, 5vw, 80px);
-}
-.landing-intro > * {
-  min-width: 0;
-}
 .landing-page .hero {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
-  padding: 0;
+  min-height: calc(100dvh - var(--site-chrome-height));
+  padding: clamp(24px, 4dvh, 64px) 0;
   margin: 0;
   text-align: center;
 }
 .landing-page .hero-copy {
   width: 100%;
+  min-width: 0;
   padding: 0;
 }
 .landing-page .eyebrow {
@@ -72,8 +62,8 @@
   margin-top: clamp(18px, 3svh, 28px);
 }
 .goals-section {
-  padding: clamp(18px, 3svh, 30px) 0;
-  margin: 0;
+  padding: clamp(48px, 6vw, 88px) 0;
+  margin-bottom: clamp(48px, 5vw, 80px);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -299,10 +289,6 @@
   }
 }
 @media (max-width: 767px) {
-  .landing-intro {
-    gap: 16px;
-    padding-block: 20px;
-  }
   .landing-page .hero h1 {
     font-size: clamp(64px, min(19vw, 15svh), 96px);
   }
@@ -332,7 +318,7 @@
     font-size: 45px;
   }
   .goals-section {
-    padding-block: 16px;
+    padding-block: 40px;
   }
   .goal-layout {
     grid-template-columns: 1fr;
@@ -441,26 +427,5 @@
   }
   .brand {
     font-size: 23px;
-  }
-}
-/* A short viewport has more room across than down: keep the full intro visible. */
-@media (min-width: 768px) and (max-height: 720px) {
-  .landing-intro {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: 1fr;
-    align-items: center;
-    gap: clamp(24px, 4vw, 64px);
-    padding-block: clamp(20px, 4svh, 32px);
-  }
-  .landing-page .hero h1 {
-    font-size: clamp(72px, min(10vw, 19svh), 128px);
-  }
-  .goals-section {
-    border-block: 0;
-    border-inline-start: 1px solid var(--line);
-    padding: 16px 0 16px clamp(24px, 3vw, 48px);
-  }
-  .goal-intro h2 {
-    font-size: clamp(24px, 2.6vw, 34px);
   }
 }
