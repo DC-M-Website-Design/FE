@@ -1,4 +1,17 @@
 /* The landing page introduces the club, its goals, and member activities. */
+html:has(.landing-page) {
+  --landing-screen-height: calc(100dvh - var(--header-height) - 1px);
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: calc(var(--header-height) + 1px);
+}
+.landing-page > section,
+.landing-invite {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+html:has(.landing-page) .site-footer {
+  scroll-snap-align: end;
+}
 .plain-button {
   padding: 0;
   background: transparent;
@@ -33,6 +46,7 @@
   padding: clamp(24px, 4dvh, 64px) 0;
   margin: 0;
   text-align: center;
+  scroll-snap-align: end;
 }
 .landing-page .hero-copy {
   width: 100%;
@@ -62,21 +76,25 @@
   margin-top: clamp(18px, 3svh, 28px);
 }
 .goals-section {
-  padding: clamp(48px, 6vw, 88px) 0;
-  margin-bottom: clamp(48px, 5vw, 80px);
+  display: grid;
+  place-items: center;
+  min-height: var(--landing-screen-height);
+  padding: clamp(32px, 5svh, 72px) 0;
+  margin: 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 .goal-layout {
   display: block;
+  width: 100%;
 }
 .goal-intro {
   text-align: center;
 }
 .goal-intro h2 {
-  max-width: 760px;
+  max-width: 1100px;
   margin-inline: auto;
-  font-size: clamp(26px, min(3vw, 4.8svh), 38px);
+  font-size: clamp(32px, min(4.2vw, 7svh), 64px);
   line-height: 1.35;
   letter-spacing: -0.055em;
   text-wrap: balance;
@@ -85,7 +103,7 @@
   display: block;
 }
 .goal-intro .section-label {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 .goal-intro > p {
   max-width: 700px;
@@ -94,6 +112,21 @@
   font-size: clamp(13px, 1.05vw, 16px);
   line-height: 1.75;
   text-wrap: pretty;
+}
+.landing-page .landing-activities {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--landing-screen-height);
+  gap: clamp(16px, 2.5svh, 28px);
+  padding-block: clamp(20px, 3svh, 48px);
+  margin: 0;
+}
+.landing-activities .section-heading {
+  margin-bottom: 0;
+}
+.landing-activities .section-heading h2 {
+  font-size: clamp(26px, min(2.5vw, 4.5svh), 36px);
 }
 .goal-list {
   display: grid;
@@ -130,7 +163,7 @@
 }
 .member-activity-photo > img {
   width: 100%;
-  height: 460px;
+  height: clamp(180px, 42svh, 480px);
   border-radius: 16px;
   object-position: 44% 50%;
 }
@@ -151,7 +184,7 @@
 }
 .activity-option {
   display: block;
-  padding: 23px 0;
+  padding: clamp(8px, 1.6svh, 20px) 0;
   border-top: 1px solid var(--line);
 }
 .activity-option:first-child {
@@ -162,12 +195,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: clamp(6px, 1svh, 10px);
   color: var(--muted);
 }
 .option-heading .quick-icon {
-  width: 35px;
-  height: 35px;
+  width: clamp(28px, 4svh, 35px);
+  height: clamp(28px, 4svh, 35px);
   border-radius: 9px;
 }
 .option-heading .quick-icon .icon {
@@ -183,18 +216,18 @@
   transform: translate(3px, -3px);
 }
 .activity-option h3 {
-  font-size: 24px;
-  margin-bottom: 9px;
+  font-size: clamp(17px, min(1.7vw, 2.8svh), 24px);
+  margin-bottom: 6px;
 }
 .activity-option p {
-  font-size: 15px;
+  font-size: clamp(13px, 1.05vw, 15px);
   line-height: 1.8;
   max-width: 520px;
 }
 .option-detail {
   display: inline-block;
-  margin-top: 12px;
-  font-size: 12px;
+  margin-top: 8px;
+  font-size: 11px;
   color: var(--accent-ink);
 }
 .landing-invite {
@@ -273,7 +306,7 @@
     gap: 27px;
   }
   .member-activity-photo > img {
-    height: 390px;
+    height: clamp(180px, 36svh, 390px);
   }
   .activity-option h3 {
     font-size: 16px;
@@ -318,14 +351,14 @@
     font-size: 45px;
   }
   .goals-section {
-    padding-block: 40px;
+    padding-block: 32px;
   }
   .goal-layout {
     grid-template-columns: 1fr;
     gap: 31px;
   }
   .goal-intro h2 {
-    font-size: clamp(24px, 5.8vw, 30px);
+    font-size: clamp(28px, 6.6vw, 36px);
   }
   .goal-intro .section-label {
     margin-bottom: 10px;
@@ -363,6 +396,9 @@
     grid-template-columns: 1fr;
     gap: 27px;
   }
+  .landing-activities .member-activity-photo {
+    display: none;
+  }
   .member-activity-photo > img {
     height: 245px;
   }
@@ -375,24 +411,31 @@
   .member-photo-caption p {
     font-size: 11px;
   }
-  .activity-option {
-    padding: 22px 0;
+  .landing-activities .activity-option {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: 12px;
+    padding: 16px 0;
   }
-  .activity-option:first-child {
+  .landing-activities .activity-option:first-child {
     border-top: 1px solid var(--line);
-    padding-top: 22px;
   }
-  .activity-option h3 {
+  .landing-activities .activity-option h3 {
+    grid-column: 2;
     font-size: 18px;
   }
-  .activity-option p {
-    font-size: 12px;
+  .landing-activities .activity-option p,
+  .landing-activities .option-detail {
+    grid-column: 2;
   }
-  .option-heading {
-    margin-bottom: 11px;
+  .landing-activities .option-heading {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    align-items: start;
+    margin: 0;
   }
-  .option-detail {
-    font-size: 10px;
+  .landing-activities .option-heading > .icon {
+    display: none;
   }
   .landing-invite {
     align-items: start;
@@ -427,5 +470,42 @@
   }
   .brand {
     font-size: 23px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1000px),
+  (min-width: 600px) and (max-height: 540px) {
+  .landing-activities .member-activity-photo {
+    display: none;
+  }
+  .landing-activities .join-activities-layout {
+    grid-template-columns: 1fr;
+  }
+  .landing-activities .activity-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .landing-activities .activity-option {
+    display: block;
+    border-top: 1px solid var(--line);
+    padding-block: 16px;
+  }
+  .landing-activities .option-heading {
+    margin-bottom: 8px;
+  }
+}
+@media (max-width: 767px) and (max-height: 650px) {
+  .landing-activities .activity-option {
+    padding-block: 12px;
+  }
+  .landing-activities .activity-option h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .landing-activities .activity-option p {
+    font-size: 12px;
+    line-height: 1.65;
+  }
+  .landing-activities .option-detail {
+    display: none;
   }
 }
