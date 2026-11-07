@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+import "./HistoryTimeline.css";
 import { aboutParagraphs, club } from "../data/content";
 import {
   achievements,
@@ -109,22 +111,66 @@ function PeopleSection() {
 }
 
 function AchievementsSection() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    let frame = 0;
+    const track = timeline.querySelector<HTMLElement>(".history-track");
+    const rows = timeline.querySelectorAll<HTMLElement>(".achievement-year, .history-origin");
+    const update = () => {
+      const rect = (track ?? timeline).getBoundingClientRect();
+      const trigger = window.innerHeight * 0.78;
+      const progress = Math.max(0, Math.min(1, (trigger - rect.top) / rect.height));
+      timeline.style.setProperty("--history-progress", String(progress));
+      rows.forEach((row) => {
+        row.classList.toggle("is-visible", row.getBoundingClientRect().top <= trigger);
+      });
+      frame = 0;
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    // Only hide upcoming cards after the scroll handler is ready.
+    timeline.classList.add("is-animated");
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, []);
+
   return (
-    <div className="achievements-timeline">
+    <div className="achievements-timeline" ref={timelineRef}>
+      <div className="history-track" aria-hidden="true"><span /></div>
       {achievements.map(({ year, items }) => (
         <section
           className="achievement-year"
           key={year}
           aria-labelledby={`year-${year}`}
         >
-          <h2 id={`year-${year}`}>{year}</h2>
-          <ul>
-            {items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <span className="history-dot" aria-hidden="true" />
+          <div className="history-card">
+            <h2 id={`year-${year}`}>{year}</h2>
+            <ul>
+              {items.map((item) => (
+                <li key={item}><Icon name="check" /><span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
         </section>
       ))}
+      <section className="history-origin" aria-labelledby="history-origin-year">
+        <div className="history-origin-badge">
+          <span className="history-origin-label">SINCE</span>
+          <h2 id="history-origin-year">2001</h2>
+          <p>DC&amp;M 동아리 시작</p>
+        </div>
+      </section>
     </div>
   );
 }
