@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+import "./HistoryTimeline.css";
 import { aboutParagraphs, club } from "../data/content";
 import {
   achievements,
@@ -109,20 +111,58 @@ function PeopleSection() {
 }
 
 function AchievementsSection() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    let frame = 0;
+    const rows = timeline.querySelectorAll<HTMLElement>(".achievement-year");
+    const update = () => {
+      const rect = timeline.getBoundingClientRect();
+      const trigger = window.innerHeight * 0.78;
+      const progress = Math.max(0, Math.min(1, (trigger - rect.top) / rect.height));
+      timeline.style.setProperty("--history-progress", String(progress));
+      rows.forEach((row) => {
+        if (row.getBoundingClientRect().top <= trigger) {
+          row.classList.add("is-visible");
+        }
+      });
+      frame = 0;
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    // Only hide upcoming cards after the scroll handler is ready.
+    timeline.classList.add("is-animated");
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, []);
+
   return (
-    <div className="achievements-timeline">
+    <div className="achievements-timeline" ref={timelineRef}>
+      <div className="history-track" aria-hidden="true"><span /></div>
       {achievements.map(({ year, items }) => (
         <section
           className="achievement-year"
           key={year}
           aria-labelledby={`year-${year}`}
         >
-          <h2 id={`year-${year}`}>{year}</h2>
-          <ul>
-            {items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <span className="history-dot" aria-hidden="true" />
+          <div className="history-card">
+            <h2 id={`year-${year}`}>{year}</h2>
+            <ul>
+              {items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </section>
       ))}
     </div>
