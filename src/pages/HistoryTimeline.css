@@ -82,6 +82,8 @@
 }
 .achievement-year:nth-of-type(even) .history-card li { justify-content: flex-start; }
 .history-card li + li { margin-top: 5px; }
+.achievements-timeline .history-card li { padding-left: 0; }
+.achievements-timeline .history-card li::before { content: none; }
 .history-dot {
   position: absolute;
   left: calc(50% - 7px);
