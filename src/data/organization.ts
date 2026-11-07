@@ -12,7 +12,7 @@ export const faculty: MemberProfile = {
   name: "김태리",
   role: "지도교수",
   affiliation: "한성대학교 컴퓨터공학부",
-  description: "동아리의 학습과 프로젝트 활동을 함께 지도합니다.",
+  description: "추천 시스템과 그래프 기반 학습, 멀티모달 학습을 연구합니다.",
   profileUrl: "https://taerikkk.github.io/#education",
   email: "taerik@hansung.ac.kr",
 };
